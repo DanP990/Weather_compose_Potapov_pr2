@@ -21,11 +21,7 @@ fun ScaffoldHome() {
         TopAppBar(title = {
             Text(text = "Weather")
         }, actions = {
-            IconButton(onClick = {}) {
-                Icon(
-                    imageVector = Icons.Filled.Settings, contentDescription = "Settings"
-                )
-            }
+            IconButtonSettings()
         })
     }, bottomBar = {
         BottomAppBar(
@@ -33,16 +29,8 @@ fun ScaffoldHome() {
         ) {
 
             Spacer(Modifier.weight(1f, true))
-            IconButton(onClick = { /* Handle icon click */ }) {
-                Icon(
-                    Icons.Filled.Favorite, contentDescription = "Favorite"
-                )
-            }
-            IconButton(onClick = { /* Handle icon click */ }) {
-                Icon(
-                    Icons.Filled.Share, contentDescription = "Share"
-                )
-            }
+            IconButtonFavorite()
+            IconButtonShare()
 
         }
     }) {
@@ -52,5 +40,32 @@ fun ScaffoldHome() {
             TabLayout()
         }
 
+    }
+}
+
+@Composable
+fun IconButtonSettings(){
+    IconButton(onClick = {}) {
+        Icon(
+            imageVector = Icons.Filled.Settings, contentDescription = "Settings"
+        )
+    }
+}
+
+@Composable
+fun IconButtonFavorite(){
+    IconButton(onClick = { /* Handle icon click */ }) {
+        Icon(
+            Icons.Filled.Favorite, contentDescription = "Favorite"
+        )
+    }
+}
+
+@Composable
+fun IconButtonShare(){
+    IconButton(onClick = { /* Handle icon click */ }) {
+        Icon(
+            Icons.Filled.Share, contentDescription = "Share"
+        )
     }
 }

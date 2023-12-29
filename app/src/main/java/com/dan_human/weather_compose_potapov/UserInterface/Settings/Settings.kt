@@ -28,7 +28,6 @@ import com.dan_human.weather_compose_potapov.ui.theme.BlueLight
 @Composable
 fun Settings() {
     val checkedState = remember { mutableStateOf(false) }
-    var text = " "
 
     Card(
         modifier = Modifier.fillMaxSize(),
@@ -65,7 +64,7 @@ fun Settings() {
 @Composable
 fun TextSettings() {
     Text(
-        text = "Settings",
+        text = "Change Settings",
         style = TextStyle(fontSize = 25.sp),
         color = Color.White,
     )

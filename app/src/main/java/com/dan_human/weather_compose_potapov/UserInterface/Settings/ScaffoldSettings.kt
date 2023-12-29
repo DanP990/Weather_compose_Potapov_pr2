@@ -18,6 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.dan_human.weather_compose_potapov.BackGround
+import com.dan_human.weather_compose_potapov.UserInterface.home.IconButtonFavorite
+import com.dan_human.weather_compose_potapov.UserInterface.home.IconButtonShare
 import com.dan_human.weather_compose_potapov.UserInterface.home.MainCard
 import com.dan_human.weather_compose_potapov.UserInterface.home.TabLayout
 
@@ -28,11 +30,7 @@ fun ScaffoldSettings() {
         TopAppBar(title = {
             Text(text = "Settings")
         }, actions = {
-            IconButton(onClick = {}) {
-                Icon(
-                    imageVector = Icons.Filled.ArrowBack, contentDescription = "ArrowBack"
-                )
-            }
+            IconButtonBack()
         })
     }, bottomBar = {
         BottomAppBar(
@@ -40,22 +38,21 @@ fun ScaffoldSettings() {
         ) {
 
             Spacer(Modifier.weight(1f, true))
-            IconButton(onClick = { /* Handle icon click */ }) {
-                Icon(
-                    Icons.Filled.Favorite, contentDescription = "Favorite"
-                )
-            }
-            IconButton(onClick = { /* Handle icon click */ }) {
-                Icon(
-                    Icons.Filled.Share, contentDescription = "Share"
-                )
-            }
+            IconButtonFavorite()
+            IconButtonShare()
 
         }
     }) {
         BackGround()
         Settings()
+    }
+}
 
-
+@Composable
+fun IconButtonBack() {
+    IconButton(onClick = {}) {
+        Icon(
+            imageVector = Icons.Filled.ArrowBack, contentDescription = "ArrowBack"
+        )
     }
 }
