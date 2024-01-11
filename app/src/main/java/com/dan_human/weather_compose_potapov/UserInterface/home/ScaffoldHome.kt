@@ -16,12 +16,12 @@ import com.dan_human.weather_compose_potapov.BackGround
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun ScaffoldHome() {
+fun ScaffoldHome(onClick: () -> Unit) {
     Scaffold(topBar = {
         TopAppBar(title = {
             Text(text = "Weather")
         }, actions = {
-            IconButtonSettings()
+            IconButtonSettings(onClick = onClick)
         })
     }, bottomBar = {
         BottomAppBar(
@@ -44,28 +44,32 @@ fun ScaffoldHome() {
 }
 
 @Composable
-fun IconButtonSettings(){
+fun IconButtonSettings(onClick: () -> Unit) {
+    IconButton(onClick = { onClick() }) {
+        Icon(
+            imageVector = Icons.Filled.Settings, contentDescription = "Settings",
+
+
+            )
+    }
+}
+
+@Composable
+fun IconButtonFavorite() {
     IconButton(onClick = {}) {
         Icon(
-            imageVector = Icons.Filled.Settings, contentDescription = "Settings"
+            Icons.Filled.Favorite, contentDescription = "Favorite", tint = Color.White
+
         )
     }
 }
 
 @Composable
-fun IconButtonFavorite(){
+fun IconButtonShare() {
     IconButton(onClick = { /* Handle icon click */ }) {
         Icon(
-            Icons.Filled.Favorite, contentDescription = "Favorite"
-        )
-    }
-}
+            Icons.Filled.Share, contentDescription = "Share", tint = Color.White
 
-@Composable
-fun IconButtonShare(){
-    IconButton(onClick = { /* Handle icon click */ }) {
-        Icon(
-            Icons.Filled.Share, contentDescription = "Share"
         )
     }
 }

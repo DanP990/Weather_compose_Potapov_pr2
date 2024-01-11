@@ -10,6 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.dan_human.weather_compose_potapov.UserInterface.Settings.ScaffoldSettings
 import com.dan_human.weather_compose_potapov.UserInterface.home.ScaffoldHome
 import com.dan_human.weather_compose_potapov.ui.theme.Weather_compose_PotapovTheme
@@ -18,10 +21,24 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val navController = rememberNavController()
             Weather_compose_PotapovTheme {
-                ScaffoldSettings()
-                //ScaffoldHome()
+                NavHost(navController = navController,
+                    startDestination = "ScaffoldHome",
+                    builder = {
+                        composable("ScaffoldHome") {
+                            ScaffoldHome {
+                                navController.navigate("ScaffoldSettings")
+                            }
+                        }
+                        composable("ScaffoldSettings") {
+                            ScaffoldSettings {
+                                navController.navigate("ScaffoldHome")
+                            }
 
+
+                        }
+                    })
             }
         }
     }

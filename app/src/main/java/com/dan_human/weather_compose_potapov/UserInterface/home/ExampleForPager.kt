@@ -64,9 +64,7 @@ fun AsImageHours() {
 @Composable
 fun TempretureHours() {
     Text(
-        text = "-8°C",
-        color = Color.White,
-        style = TextStyle(fontSize = 25.sp)
+        text = "-8°C", color = Color.White, style = TextStyle(fontSize = 25.sp)
     )
 }
 

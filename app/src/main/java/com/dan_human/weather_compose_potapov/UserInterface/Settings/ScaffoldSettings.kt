@@ -25,12 +25,12 @@ import com.dan_human.weather_compose_potapov.UserInterface.home.TabLayout
 
 @Preview
 @Composable
-fun ScaffoldSettings() {
+fun ScaffoldSettings(onClick: () -> Unit) {
     Scaffold(topBar = {
         TopAppBar(title = {
             Text(text = "Settings")
         }, actions = {
-            IconButtonBack()
+            IconButtonBack(onClick = onClick)
         })
     }, bottomBar = {
         BottomAppBar(
@@ -49,8 +49,8 @@ fun ScaffoldSettings() {
 }
 
 @Composable
-fun IconButtonBack() {
-    IconButton(onClick = {}) {
+fun IconButtonBack(onClick: () -> Unit) {
+    IconButton(onClick = { onClick() }) {
         Icon(
             imageVector = Icons.Filled.ArrowBack, contentDescription = "ArrowBack"
         )

@@ -42,9 +42,9 @@ fun Settings() {
             TextSettings()
             TextField(checkedState.value)
 
-            Row(
+            Column(
                 modifier = Modifier.padding(bottom = 40.dp),
-                horizontalArrangement = Arrangement.Center
+                verticalArrangement = Arrangement.Center
             ) {
                 TextGeo()
                 CheckBox(checkedState)
@@ -91,11 +91,12 @@ fun TextGeo() {
 
 
 @Composable
-fun CheckBox(bebra: MutableState<Boolean>) {
+fun CheckBox(value: MutableState<Boolean>) {
     Checkbox(
-        checked = bebra.value,
+        modifier = Modifier.padding(start = 35.dp),
+        checked = value.value,
         onCheckedChange = {
-            bebra.value = it
+            value.value = it
         },
     )
 }

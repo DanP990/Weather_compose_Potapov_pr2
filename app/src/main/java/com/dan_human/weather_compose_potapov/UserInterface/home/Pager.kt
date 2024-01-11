@@ -37,35 +37,26 @@ fun TabLayout() {
             )
     ) {
         TabRow(
-            selectedTabIndex = tabIndex,
-            indicator = { pos ->
+            selectedTabIndex = tabIndex, indicator = { pos ->
                 TabRowDefaults.Indicator(
                     Modifier.pagerTabIndicatorOffset(pagerState, pos)
                 )
-            },
-            backgroundColor = BlueLight,
-            contentColor = Color.White
+            }, backgroundColor = BlueLight, contentColor = Color.White
 
         ) {
             tabList.forEachIndexed { index, text ->
-                Tab(
-                    selected = false,
-                    onClick = {
-                        coroutineScope.launch {
-                            pagerState.animateScrollToPage(index)
-                        }
-                    },
-                    text = {
-                        Text(text = text)
+                Tab(selected = false, onClick = {
+                    coroutineScope.launch {
+                        pagerState.animateScrollToPage(index)
                     }
-                )
+                }, text = {
+                    Text(text = text)
+                })
             }
 
         }
         HorizontalPager(
-            count = tabList.size,
-            state = pagerState,
-            modifier = Modifier.weight(1.0f)
+            count = tabList.size, state = pagerState, modifier = Modifier.weight(1.0f)
         ) { index ->
             LazyColumn(
                 modifier = Modifier.fillMaxSize()
